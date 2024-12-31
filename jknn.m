@@ -1,6 +1,6 @@
 % K-nearest Neighbor (9/12/2020)
 
-function Acc = jknn(feat,label,opts)
+function [Acc] = jknn(feat,label,opts)
 % Default of k-value
 k = 5;
 
@@ -17,8 +17,8 @@ My_Model = fitcknn(xtrain,ytrain,'NumNeighbors',k);
 pred     = predict(My_Model,xvalid);
 % Accuracy
 Acc      = sum(pred == yvalid) / length(yvalid);
-
 fprintf('\n Accuracy: %g %%',100 * Acc);
+
 end
 
 

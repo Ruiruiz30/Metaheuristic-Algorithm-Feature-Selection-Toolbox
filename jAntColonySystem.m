@@ -10,7 +10,7 @@ alpha = 1;      % control pheromone
 beta  = 1;      % control heuristic
 rho   = 0.2;    % pheromone trail decay coefficient
 phi   = 0.5;    % pheromena coefficient
-
+feat = gpuArray(feat);
 if isfield(opts,'N'), N = opts.N; end
 if isfield(opts,'T'), max_Iter = opts.T; end
 if isfield(opts,'tau'), tau = opts.tau; end  

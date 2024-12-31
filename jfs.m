@@ -1,7 +1,12 @@
 % Wrapper Feature Selection Toolbox by Jingwei Too - 9/12/2020
+% Updated by Jinrui Zhang - 12/31/2024
 
 function model = jfs(type,feat,label,opts)
 switch type
+  % new
+  case 'rime' ; fun = @jRIME;
+  case 'coa'  ; fun = @jCrayfishOptimizationAlgorithm;
+  case 'plo'  ; fun = @jPolarLightsOptimizer;
   % 2020
   case 'mpa'  ; fun = @jMarinePredatorsAlgorithm; 
   case 'gndo' ; fun = @jGeneralizedNormalDistributionOptimization;

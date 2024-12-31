@@ -1,5 +1,8 @@
 %---List of available wrapper FS methods------------------------------
-
+% new
+'rime'       : Rime Algorithm; 
+'coa'        : Crayfish Optimization Algorithm; 
+'plo'        : Polar Lights Optimizer; 
 % 2020
 'mpa'       : Marine Predators Algorithm; 
 'gndo'      : Generalized Normal Distribution Optimization;

@@ -24,7 +24,7 @@ Xgb  = X;
 fitG = fit;
 % Pre
 curve = zeros(1,max_Iter);
-t = 2;
+t = 1;
 % Iterations
 while t <= max_Iter
 	% Probabilty of swap, insert, flip & eliminate
