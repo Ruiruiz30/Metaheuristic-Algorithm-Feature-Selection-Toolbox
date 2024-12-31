@@ -34,5 +34,5 @@ for i=1:dataset
         dat(a,:) = BestF(a,i,:);
     end
 
-    Wilcoxon(i,:)=my_pv(['F',num2str(i)], dat, Algorithm_name);
+    Wilcoxon(i,:)=wilcoxon(['F',num2str(i)], dat, Algorithm_name);
 end
