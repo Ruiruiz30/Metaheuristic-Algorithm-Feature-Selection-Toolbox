@@ -1,4 +1,4 @@
-# Jx-WFST : A Wrapper Feature Selection Toolbox
+# A Newer Wrapper Feature Selection Toolbox improved by Jx-WFST.
 
 [![View Wrapper Feature Selection Toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/84139-wrapper-feature-selection-toolbox)
 [![License](https://img.shields.io/badge/license-BSD_3-yellow.svg)](https://github.com/JingweiToo/Wrapper-Feature-Selection-Toolbox/blob/main/LICENSE)
@@ -8,14 +8,18 @@
 > "Toward Talent Scientist: Sharing and Learning Together"
 >  --- [Jingwei Too](https://jingweitoo.wordpress.com/)
 ---
-
+---
+> The purpose of scientific research is for development, not SCI.
+>  --- [Jinrui Zhang]()
+---
 ![Wheel](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/5dc2bdb4-ce4b-4e0e-bd6e-0237ff6ddde1/f9a9e760-64b9-4e31-9903-dffcabdf8be6/images/1607601518.JPG)
 
 
 ## Introduction
 
 * This toolbox offers more than 40 wrapper feature selection methods
-* The `A_Main` file provides the examples of how to apply these methods on benchmark dataset 
+* In this toolbox, you can run multiple algorithms together and compare their performance
+* This toolbox adds the calculation of F-measure and Precision on v1.0
 * Source code of these methods are written based on pseudocode & paper
 
 
@@ -33,7 +37,14 @@ FS = jfs('pso',feat,label,opts);
 ```code
 FS = jfs('sma',feat,label,opts);
 ```
-
+* `jfs` contains the names of all the algorithms available in the toolbox and points to the corresponding functions
+* You can specify which algorithms you want to run at the same time in `get_Algorithm`
+* You can specify the dataset you want to process in `get_Dataset`
+* With `A_get_one_data`, you can use one algorithm to perform Feature selection on multiple datasets and visualize data such as Accuracy, Feature size, etc.
+* Using `A_get_all_data`, you can run multiple algorithms simultaneously for feature selection on multiple datasets and compute Fitness, Accuracy, F-measure, Precision, etc., along with Friedman ranking
+* Using `A_Fitness_Wilcoxon`, you can perform the wilcoxon rank-sum test on multiple algorithms
+* The parameters in the code are commented
+  
 ## Input
 * *`feat`*   : feature vector matrix ( Instance *x* Features )
 * *`label`*  : label matrix ( Instance *x* 1 )
@@ -55,113 +66,7 @@ FS = jfs('sma',feat,label,opts);
 
 ## Notation
 Some methods have their specific parameters ( example: PSO, GA, DE ), and if you do not set them then they will be defined as default settings
-* you may open the *m.file* to view or change the parameters
 * you may use *`opts`* to set the parameters of method ( see example 1 or refer [here](/Description.md) )
-* you may also change the fitness function in `jFitnessFunction` file 
-
-
-### Example 1 : Particle Swarm Optimization ( PSO ) 
-```code 
-% Common parameter settings
-opts.k  = 5;      % Number of k in K-nearest neighbor
-opts.N  = 10;     % number of solutions
-opts.T  = 100;    % maximum number of iterations
-% Parameters of PSO
-opts.c1 = 2;
-opts.c2 = 2;
-opts.w  = 0.9;
-
-% Load dataset
-load ionosphere.mat;
-
-% Ratio of validation data
-ho = 0.2;
-% Divide data into training and validation sets
-HO = cvpartition(label,'HoldOut',ho); 
-opts.Model = HO; 
-
-% Perform feature selection 
-FS = jfs('pso',feat,label,opts);
-
-% Define index of selected features
-sf_idx = FS.sf;
-
-% Accuracy  
-Acc = jknn(feat(:,sf_idx),label,opts); 
-
-% Plot convergence
-plot(FS.c); grid on;
-xlabel('Number of Iterations'); 
-ylabel('Fitness Value');
-title('PSO');
-```
-
-### Example 2 : Slime Mould Algorithm ( SMA ) 
-```code
-% Common parameter settings
-opts.k  = 5;      % Number of k in K-nearest neighbor
-opts.N  = 10;     % number of solutions
-opts.T  = 100;    % maximum number of iterations
-
-% Load dataset
-load ionosphere.mat; 
-
-% Ratio of validation data
-ho = 0.2;
-% Divide data into training and validation sets
-HO = cvpartition(label,'HoldOut',ho); 
-opts.Model = HO; 
-
-% Perform feature selection 
-FS = jfs('sma',feat,label,opts);
-
-% Define index of selected features
-sf_idx = FS.sf;
-
-% Accuracy  
-Acc = jknn(feat(:,sf_idx),label,opts); 
-
-% Plot convergence
-plot(FS.c); grid on; 
-xlabel('Number of Iterations');
-ylabel('Fitness Value'); 
-title('SMA');
-```
-
-### Example 3 : Whale Optimization Algorithm ( WOA )
-```code
-% Common parameter settings
-opts.k  = 5;      % Number of k in K-nearest neighbor
-opts.N  = 10;     % number of solutions
-opts.T  = 100;    % maximum number of iterations
-% Parameter of WOA
-opts.b = 1;
-
-% Load dataset
-load ionosphere.mat; 
-
-% Ratio of validation data
-ho = 0.2;
-% Divide data into training and validation sets
-HO = cvpartition(label,'HoldOut',ho); 
-opts.Model = HO; 
-
-% Perform feature selection 
-FS = jfs('woa',feat,label,opts);
-
-% Define index of selected features
-sf_idx = FS.sf;
-
-% Accuracy  
-Acc = jknn(feat(:,sf_idx),label,opts); 
-
-% Plot convergence
-plot(FS.c); grid on; 
-xlabel('Number of Iterations'); 
-ylabel('Fitness Value'); 
-title('WOA');
-```
-
 
 ## Requirement
 
@@ -178,6 +83,9 @@ title('WOA');
 
 | No. | Abbreviation | Name                                                                                        | Year | Extra Parameters |
 |-----|--------------|---------------------------------------------------------------------------------------------|------|------------------|
+| 46  | `'plo'`      | Polar Lights Optimizer                                                                      | 2024 | Yes              |
+| 45  | `'coa'`      | Crayfish Optimization Algorithm                                                             | 2024 | Yes              |
+| 44  | `'rime'`     | RIME Optimization Algorithm                                                                 | 2023 | Yes              |
 | 43  | `'mpa'`      | [Marine Predators Algorithm](/Description.md#marine-predators-algorithm-mpa)                | 2020 | Yes              |
 | 42  | `'gndo'`     | Generalized Normal Distribution Optimization                                                | 2020 | No               |
 | 41  | `'sma'`      | Slime Mould Algorithm                                                                       | 2020 | No               |
