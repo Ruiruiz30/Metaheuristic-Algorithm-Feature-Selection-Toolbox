@@ -1,4 +1,4 @@
-function [Aobj,n] = get_Name(A)
+function [Aobj,n] = get_Algorithm(A)
 switch A
     case 1
         Aobj = 'rime';

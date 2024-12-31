@@ -63,7 +63,7 @@ all_dataA = zeros(Num_Algorithm*Num_dataset,runs);
 
 %% Main
 for a = 1:Num_dataset    
-    [dataset_name,feat,label] = get_dataset_name(a);
+    [dataset_name,feat,label] = get_Dataset(a);
     Best_Fitness = zeros(Num_Algorithm,runs);  
     BestAcc = zeros(Num_Algorithm,runs);
     BestFmeasure = zeros(Num_Algorithm,runs);
@@ -79,7 +79,7 @@ for a = 1:Num_dataset
             for j = 1:runs  
                 disp(" ");
                 disp("The dataset for the run are: "+dataset_name+", run "+num2str(p)+" . Run Algorithm "+num2str(i)+" . Running for the "+num2str(j)+" time.") 
-                [Algorithm_name,legend_name] = get_Name(i);
+                [Algorithm_name,legend_name] = get_Algorithm(i);
                 HO = cvpartition(label,'HoldOut',ho);   
                 opts.Model = HO;
                 FS = jfs(Algorithm_name,feat,label,opts);   

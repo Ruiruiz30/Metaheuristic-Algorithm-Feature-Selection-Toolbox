@@ -1,4 +1,4 @@
-function [name,feat,label] = get_dataset_name(A)
+function [name,feat,label] = get_Dataset(A)
 switch A
     case 1 % UCI
         load ./Dataset/arrhythmia.mat;
