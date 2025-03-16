@@ -5,12 +5,7 @@
 [![GitHub release](https://img.shields.io/badge/release-2.0.0-green.svg)](https://github.com/Ruiruiz30/Newer-Wrapper-Feature-Selection-Toolbox/blob/main/README.md)
 
 ---
-> "Toward Talent Scientist: Sharing and Learning Together"
->  --- [Jingwei Too](https://jingweitoo.wordpress.com/)
----
----
-> The purpose of scientific research is for development, not SCI.
->  --- [Jinrui Zhang]()
+
 ---
 ![Wheel](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/5dc2bdb4-ce4b-4e0e-bd6e-0237ff6ddde1/f9a9e760-64b9-4e31-9903-dffcabdf8be6/images/1607601518.JPG)
 
